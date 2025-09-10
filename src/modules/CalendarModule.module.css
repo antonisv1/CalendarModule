@@ -1,0 +1,390 @@
+/* --- General Layout --- */
+body, html, .container {
+  background-color: #f1f1f1; /* Light background color */
+  color: #323130; /* Dark text for the overall page */
+  font-family: Segoe UI, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.container {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mainContent {
+  flex: 3;
+  min-width: 600px;
+}
+
+/* --- Header and Error --- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #201f1e; /* Darker heading color */
+}
+
+.error {
+  color: #a4262c; /* Red text for error */
+  background: #fde7e9; /* Light red background */
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* --- Day Grouping --- */
+.dayGroup {
+  margin-top: 20px;
+}
+
+.dayLabel {
+  font-weight: 600;
+  font-size: 14px;
+  color: #605e5c; /* Mid-gray for labels */
+  margin-bottom: 8px;
+}
+
+/* --- Calendar Card Styles --- */
+.card {
+  background: #ffffff; /* White background for cards */
+  color: #323130; /* Dark text */
+  border-radius: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  padding: 16px;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card:hover {
+  background-color: #f5f5f5; /* Light gray on hover */
+}
+
+.eventTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #201f1e;
+}
+
+.eventMeta {
+  font-size: 12px;
+  color: #605e5c;
+  margin-top: 4px;
+}
+
+/* --- Upcoming Events Widget --- */
+.upcomingEventsWidget {
+  flex: 1;
+  min-width: 280px;
+  max-width: 380px;
+  background: #ffffff; /* White background */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  align-self: flex-start;
+}
+
+/* Widget header (Heading 2 spec) */
+.widgetHeader {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(51, 51, 51);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.monochromeIcon {
+  filter: none; /* No filter needed for a light theme */
+}
+
+/* Each event item (Plain Text spec) */
+.widgetEventItem {
+  padding: 10px 12px;
+  border-radius: 0;
+  margin: 0;
+  background-color: #ffffff; /* White default */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Odd rows → gray background */
+.widgetEventItem:nth-child(odd) {
+  background-color: rgb(243, 242, 241);
+}
+
+/* Hover state just darkens slightly */
+.widgetEventItem:hover {
+  background-color: rgb(237, 235, 233);
+}
+
+/* Event links inside items */
+.widgetEventLink {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(3, 120, 124);
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.widgetEventLink:hover {
+  color: rgb(213, 17, 31);
+  text-decoration: none;
+}
+
+/* --- Event Details Page Styles --- */
+.detailsPageWrapper {
+  background-color: #f3f2f1; /* Light gray background for the entire page */
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailsCard {
+  display: flex;
+  flex-direction: column; /* ✅ stack bannerRow, detailsRow, footerMeta vertically */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  color: #605e5c;
+}
+
+.detailsImageSection {
+  flex: 1; /* Image section takes up one part of the space */
+  position: relative;
+  overflow: hidden;
+  min-height: 300px; /* Ensures consistent height */
+}
+
+.detailsImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailsImageOverlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  color: #323130;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px; /* Space between date box and close button */
+}
+
+.detailsDateBox {
+  background-color: rgb(243, 242, 241);
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.dateMonth {
+  font-size: 14px;
+  font-weight: 600;
+  color: #323130;
+  display: block;
+}
+
+.dateDay {
+  font-size: 20px;
+  font-weight: 700;
+  color: #323130;
+  display: block;
+}
+
+.detailsContentSection {
+  flex: 1; /* Content section takes up one part of the space */
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsHeader {
+  margin-bottom: 24px;
+}
+
+.detailsPageTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #323130;
+  margin: 0 0 4px 0;
+  word-break: break-word;
+}
+
+.detailsCategory {
+  font-size: 14px;
+  color: #605e5c;
+  margin: 0;
+}
+
+.detailsTextSections {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.detailsDescriptionSection {
+  flex: 2;
+}
+
+.detailsInfoSection {
+  flex: 1;
+}
+
+.sectionHeading {
+  font-size: 14px;
+  font-weight: 600;
+  color: #605e5c;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.sectionHeading:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.descriptionText,
+.infoText {
+  font-size: 14px;
+  color: #323130;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.addCalendarLink,
+.viewMapLink {
+  color: #03787c;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  margin-top: 8px;
+}
+
+.addCalendarLink:hover,
+.viewMapLink:hover {
+  color: #d5111f;
+  text-decoration: underline;
+}
+
+
+.bannerRow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.bannerImageSection {
+  flex: 5;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 250px; /* short and wide */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.bannerInfoSection {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  background-color: rgb(243, 242, 241);
+}
+
+.bannerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.bannerCategory {
+  font-size: 14px;
+  font-weight: 600;
+  color: #605e5c;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.detailsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.detailsDescriptionSection {
+  flex: 5;
+}
+
+.detailsInfoSection {
+  flex: 3;
+}
+
+.footerMeta {
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 12px;
+  color: #605e5c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .detailsCard {
+    flex-direction: column;
+  }
+
+  .detailsTextSections {
+    flex-direction: column;
+  }
+
+  .detailsContentSection {
+    padding: 16px;
+  }
+
+  .detailsPageTitle {
+    font-size: 24px;
+  }
+}
