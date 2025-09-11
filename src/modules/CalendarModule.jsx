@@ -76,7 +76,23 @@ export default function CalendarModule() {
     fetchEvents();
   }, []);
 
-  const formatDate = (iso) => dayjs(iso).format("MM/DD/YYYY");
+const formatDate = (iso) => {
+  const eventDate = dayjs(iso);
+  const today = dayjs();
+  const daysDiff = eventDate.diff(today, "day");
+
+  const isSameWeek = eventDate.isSame(today, "week");
+
+  if (isSameWeek) {
+    if (daysDiff === 0) return "Today";
+    if (daysDiff === 1) return "Tomorrow";
+    return `in ${daysDiff} days`;
+  }
+
+  return eventDate.format("MM/DD/YYYY");
+};
+
+
 
   // Show ALL future events, sorted by date
   const upcomingEvents = events

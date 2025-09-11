@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Spinner, Text, Link, IconButton } from "@fluentui/react";
 import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc'
 import styles from "../modules/CalendarModule.module.css";
+import { initializeIcons } from '@fluentui/react/lib/Icons';
+
+initializeIcons();
+
+dayjs.extend(utc);
 
 function ensureEnd(start, end) {
   return end || dayjs(start).add(1, "hour").toISOString();
@@ -147,6 +153,7 @@ export default function EventDetailsPage() {
     endDate.format("HH:mm") === "23:59";
 
   return (
+    <div className={`${styles.detailsPageWrapper} ${styles.invisibleScroll}`}>
     <div className={styles.detailsCard}>
 
   {/* Row 1: Banner */}
@@ -200,16 +207,18 @@ export default function EventDetailsPage() {
 
 </div>
   </div>
+ 
 
   {/* Row 3: Footer */}
+  <div className={styles.footerWrapper}>
   <div className={styles.footerMeta}> <Text variant="small">
         {author && created && `Created by ${author} on ${dayjs(created).format("DD/MM/YYYY HH:mm")}`}<br />
         {editor && modified && `Modified by ${editor} on ${dayjs(modified).format("DD/MM/YYYY HH:mm")}`}
       </Text>
+  </div>
+  </div>
 </div>
-
 </div>
-
 
   );
 }
