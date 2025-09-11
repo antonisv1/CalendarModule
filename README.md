@@ -1,4 +1,4 @@
-\# Calendar Module Task
+# Calendar Module Task
 
 
 
@@ -7,7 +7,7 @@ Navigate to the directory and open terminal.
 
 
 
-\###Commands to run:
+###Commands to run:
 -npm install --legacy-peer-deps
 -npm run dev
 
