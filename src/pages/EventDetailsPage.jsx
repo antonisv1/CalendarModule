@@ -153,71 +153,71 @@ export default function EventDetailsPage() {
 
   return (
     <div className={styles.detailsPageWrapper}>
-    <div className={styles.detailsCard}>
+      <div className={styles.detailsCard}>
 
-  {/* Row 1: Banner */}
-  <div className={styles.bannerRow}>
-    <div className={styles.bannerImageSection}>
-      <img src={banner} alt={title} className={styles.bannerImage} />
-    </div>
-    <div className={styles.bannerInfoSection}>
-      <div className={styles.bannerTop}>
-        <div className={styles.detailsDateBox}>
-          <span className={styles.dateMonth}>{startDate.format("MMM").toUpperCase()}</span>
-          <span className={styles.dateDay}>{startDate.format("DD")}</span>
+        {/* Row 1: Banner */}
+        <div className={styles.bannerRow}>
+          <div className={styles.bannerImageSection}>
+            <img src={banner} alt={title} className={styles.bannerImage} />
+          </div>
+          <div className={styles.bannerInfoSection}>
+            <div className={styles.bannerTop}>
+              <div className={styles.detailsDateBox}>
+                <span className={styles.dateMonth}>{startDate.format("MMM").toUpperCase()}</span>
+                <span className={styles.dateDay}>{startDate.format("DD")}</span>
+              </div>
+              <IconButton className={styles.closeButton} iconProps={{ iconName: "Cancel" }} onClick={() => history.goBack()} />
+            </div>
+            <h1 className={styles.detailsPageTitle}>{title}</h1>
+            <div className={styles.bannerCategory}>{category}</div>
+          </div>
         </div>
-        <IconButton className={styles.closeButton} iconProps={{ iconName: "Cancel" }} onClick={() => history.goBack()} />
+
+        {/* Row 2: Description + Info */}
+        <div className={styles.detailsRow}>
+          <div className={styles.detailsDescriptionSection}> <h2 className={styles.sectionHeading}>DESCRIPTION</h2>
+            <div
+              className={styles.descriptionText}
+              dangerouslySetInnerHTML={{ __html: description || "No description provided." }}
+            />
+
+          </div>
+          <div className={styles.detailsInfoSection}><h2 className={styles.sectionHeading}>DATE AND TIME</h2>
+            <p className={styles.infoText}>
+              {isAllDay
+                ? "All-day Event"
+                : `${startDate.format("ddd, MMM DD YYYY h:mm A")} - ${endDate.format("ddd, MMM DD YYYY h:mm A")}`}
+            </p>
+            <Link onClick={() => downloadIcs(event)} className={styles.addCalendarLink}>
+              Add to Calendar
+            </Link>
+
+            <h2 className={styles.sectionHeading}>LOCATION</h2>
+            <p className={styles.infoText}>{location || "No location specified."}</p>
+            {location && (
+              <Link
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`}
+                target="_blank"
+                className={styles.viewMapLink}
+              >
+                View Map
+              </Link>
+            )}
+
+          </div>
+        </div>
+
+
+        {/* Row 3: Footer */}
+        <div className={styles.footerWrapper}>
+          <div className={styles.footerMeta}> <Text variant="small">
+            {author && created && `Created by ${author} on ${dayjs(created).format("DD/MM/YYYY HH:mm")}`}<br />
+            {editor && modified && `Modified by ${editor} on ${dayjs(modified).format("DD/MM/YYYY HH:mm")}`}
+          </Text>
+          </div>
+        </div>
       </div>
-      <h1 className={styles.detailsPageTitle}>{title}</h1>
-      <div className={styles.bannerCategory}>{category}</div>
     </div>
-  </div>
-
-  {/* Row 2: Description + Info */}
-  <div className={styles.detailsRow}>
-    <div className={styles.detailsDescriptionSection}> <h2 className={styles.sectionHeading}>DESCRIPTION</h2>
-        <div
-          className={styles.descriptionText}
-          dangerouslySetInnerHTML={{ __html: description || "No description provided." }}
-        />
-
-</div>
-    <div className={styles.detailsInfoSection}><h2 className={styles.sectionHeading}>DATE AND TIME</h2>
-        <p className={styles.infoText}>
-          {isAllDay
-            ? "All-day Event"
-            : `${startDate.format("ddd, MMM DD YYYY h:mm A")} - ${endDate.format("ddd, MMM DD YYYY h:mm A")}`}
-        </p>
-        <Link onClick={() => downloadIcs(event)} className={styles.addCalendarLink}>
-          Add to Calendar
-        </Link>
-
-        <h2 className={styles.sectionHeading}>LOCATION</h2>
-        <p className={styles.infoText}>{location || "No location specified."}</p>
-        {location && (
-          <Link
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`}
-            target="_blank"
-            className={styles.viewMapLink}
-          >
-            View Map
-          </Link>
-        )}
-
-</div>
-  </div>
- 
-
-  {/* Row 3: Footer */}
-  <div className={styles.footerWrapper}>
-  <div className={styles.footerMeta}> <Text variant="small">
-        {author && created && `Created by ${author} on ${dayjs(created).format("DD/MM/YYYY HH:mm")}`}<br />
-        {editor && modified && `Modified by ${editor} on ${dayjs(modified).format("DD/MM/YYYY HH:mm")}`}
-      </Text>
-  </div>
-  </div>
-</div>
-</div>
 
   );
 }

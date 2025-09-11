@@ -79,21 +79,21 @@ export default function CalendarModule() {
     fetchEvents();
   }, []);
 
-const formatDate = (iso) => {
-  const eventDate = dayjs(iso);
-  const today = dayjs();
-  const daysDiff = eventDate.diff(today, "day");
+  const formatDate = (iso) => {
+    const eventDate = dayjs(iso);
+    const today = dayjs();
+    const daysDiff = eventDate.diff(today, "day");
 
-  const isSameWeek = eventDate.isSame(today, "week");
+    const isSameWeek = eventDate.isSame(today, "week");
 
-  if (isSameWeek) {
-    if (daysDiff === 0) return "Today";
-    if (daysDiff === 1) return "Tomorrow";
-    return `in ${daysDiff} days`;
-  }
+    if (isSameWeek) {
+      if (daysDiff === 0) return "Today";
+      if (daysDiff === 1) return "Tomorrow";
+      return `in ${daysDiff} days`;
+    }
 
-  return eventDate.format("MM/DD/YYYY");
-};
+    return eventDate.format("MM/DD/YYYY");
+  };
 
 
 
@@ -109,26 +109,26 @@ const formatDate = (iso) => {
           <Icon iconName="Calendar" />{" "}Upcoming Events
         </div>
         <div className={styles.eventLinkContainer}>
-        {loading && (
-          <div className={styles.loadingContainer}>
-            <Spinner size={3} label="Loading..." />
-          </div>
-        )}
+          {loading && (
+            <div className={styles.loadingContainer}>
+              <Spinner size={3} label="Loading..." />
+            </div>
+          )}
 
-        {error && <div className={styles.error}>{error}</div>}
+          {error && <div className={styles.error}>{error}</div>}
 
-        {upcomingEvents.length === 0 && !loading && <Text>No upcoming events.</Text>}
+          {upcomingEvents.length === 0 && !loading && <Text>No upcoming events.</Text>}
 
-        {upcomingEvents.map((evt) => (
-          <div className={styles.widgetEventItem} key={evt.id}>
-            <Link
-              className={styles.widgetEventLink}
-              onClick={() => history.push(`/events/${evt.id}`)}
-            >
-              {evt.title} – {formatDate(evt.start)}
-            </Link>
-          </div>
-        ))}
+          {upcomingEvents.map((evt) => (
+            <div className={styles.widgetEventItem} key={evt.id}>
+              <Link
+                className={styles.widgetEventLink}
+                onClick={() => history.push(`/events/${evt.id}`)}
+              >
+                {evt.title} – {formatDate(evt.start)}
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>

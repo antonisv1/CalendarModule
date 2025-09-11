@@ -1,19 +1,26 @@
 /* --- General Layout --- */
 
-body, html, .container {
-  background-color: #f1f1f1; /* Light background color */
-  color: #323130; /* Dark text for the overall page */
+body,
+html,
+.container {
+  background-color: #f1f1f1;
+  /* Light background color */
+  color: #323130;
+  /* Dark text for the overall page */
   font-family: Segoe UI, sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
-  overflow-y: scroll; /* or auto, depending on your needs */
+  overflow-y: scroll;
+  /* or auto, depending on your needs */
 
   /* Hide scrollbar for Chrome, Safari and Opera */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
 
 .loadingContainer {
@@ -32,76 +39,26 @@ body, html, .container {
   min-width: 100vw;
   justify-content: center;
   align-items: center;
-    flex-direction: row;
+  flex-direction: row;
 }
 
-.mainContent {
-  flex: 1;
-  min-width: 600px;
-}
+
 
 /* --- Header and Error --- */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
 
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #201f1e; /* Darker heading color */
-}
+
+
 
 .error {
-  color: #a4262c; /* Red text for error */
-  background: #fde7e9; /* Light red background */
+  color: #a4262c;
+  /* Red text for error */
+  background: #fde7e9;
+  /* Light red background */
   padding: 8px 12px;
   border-radius: 6px;
   margin-bottom: 12px;
 }
 
-/* --- Day Grouping --- */
-.dayGroup {
-  margin-top: 20px;
-}
-
-.dayLabel {
-  font-weight: 600;
-  font-size: 14px;
-  color: #605e5c; /* Mid-gray for labels */
-  margin-bottom: 8px;
-}
-
-/* --- Calendar Card Styles --- */
-.card {
-  background: #ffffff; /* White background for cards */
-  color: #323130; /* Dark text */
-  border-radius: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 16px;
-  padding: 16px;
-  display: block;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.card:hover {
-  background-color: #f5f5f5; /* Light gray on hover */
-}
-
-.eventTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: #201f1e;
-}
-
-.eventMeta {
-  font-size: 12px;
-  color: #605e5c;
-  margin-top: 4px;
-}
 
 /* --- Upcoming Events Widget --- */
 .upcomingEventsWidget {
@@ -111,7 +68,8 @@ body, html, .container {
   flex-direction: column;
   min-width: 380px;
   max-width: 380px;
-  background: #ffffff; /* White background */
+  background: #ffffff;
+  /* White background */
   border-radius: 3px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -120,16 +78,22 @@ body, html, .container {
 .eventLinkContainer {
   flex: 2;
   display: flex;
-  flex-direction: column; /* stack events vertically */
-  max-height: calc(5 * 48px); /* adjust 48px to match your .widgetEventItem height */
+  flex-direction: column;
+  /* stack events vertically */
+  max-height: calc(7 * 48px);
+  /* adjust 48px to match your .widgetEventItem height */
   overflow-y: auto;
 
   /* hide scrollbars cross-browser */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
 }
+
 .eventLinkContainer::-webkit-scrollbar {
-  display: none; /* Chrome/Safari/Opera */
+  display: none;
+  /* Chrome/Safari/Opera */
 }
 
 
@@ -145,16 +109,13 @@ body, html, .container {
   gap: 8px;
 }
 
-.monochromeIcon {
-  filter: none; /* No filter needed for a light theme */
-}
-
 /* Each event item (Plain Text spec) */
 .widgetEventItem {
   padding: 10px 12px;
   border-radius: 0;
   margin: 0;
-  background-color: rgb(243, 242, 241); /* White default */
+  background-color: rgb(243, 242, 241);
+  /* White default */
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -176,8 +137,10 @@ body, html, .container {
   text-decoration: none;
   display: block;
   cursor: pointer;
-  outline: none; /* removes focus ring */
-  border: none;  /* removes any default border */
+  outline: none;
+  /* removes focus ring */
+  border: none;
+  /* removes any default border */
 }
 
 .widgetEventLink:hover {
@@ -188,7 +151,8 @@ body, html, .container {
 .widgetEventLink:focus,
 .widgetEventLink:active,
 .widgetEventLink:visited {
-  color: rgba(213, 17, 30, 0.603) !important; /* darker red when hovered or clicked */
+  color: rgba(213, 17, 30, 0.603) !important;
+  /* darker red when hovered or clicked */
   text-decoration: none !important;
   outline: none;
   border: none;
@@ -198,7 +162,8 @@ body, html, .container {
 
 /* --- Event Details Page Styles --- */
 .detailsPageWrapper {
-  background-color: #f3f2f1; /* Light gray background for the entire page */
+  background-color: #f3f2f1;
+  /* Light gray background for the entire page */
   padding: 24px;
   min-width: 100vw;
   min-height: 100vh;
@@ -209,11 +174,12 @@ body, html, .container {
 
 .detailsCard {
   display: flex;
-  flex-direction: column; /* ✅ stack bannerRow, detailsRow, footerMeta vertically */
+  flex-direction: column;
+  /* ✅ stack bannerRow, detailsRow, footerMeta vertically */
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 80vw;
+  width: 60vw;
   height: 80vh;
   position: relative;
   overflow: hidden;
@@ -232,22 +198,9 @@ body, html, .container {
 }
 
 .closeButton:active,
-.closeButton:focus{
+.closeButton:focus {
   outline: none;
   border: none;
-}
-
-.detailsImageSection {
-  flex: 1; /* Image section takes up one part of the space */
-  position: relative;
-  overflow: hidden;
-  height: 300px; /* Ensures consistent height */
-}
-
-.detailsImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .detailsDateBox {
@@ -271,16 +224,6 @@ body, html, .container {
   display: block;
 }
 
-.detailsContentSection {
-  flex: 1; /* Content section takes up one part of the space */
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-}
-
-.detailsHeader {
-  margin-bottom: 24px;
-}
 
 .detailsPageTitle {
   padding-left: 8px;
@@ -289,12 +232,6 @@ body, html, .container {
   color: #323130;
   margin: 0 0 4px 0;
   word-break: break-word;
-}
-
-.detailsCategory {
-  font-size: 14px;
-  color: #605e5c;
-  margin: 0;
 }
 
 .detailsTextSections {
@@ -355,7 +292,7 @@ body, html, .container {
 .bannerRow {
   display: flex;
   flex-direction: row;
-  height: 42vh;
+  height: 38vh;
   margin-bottom: 14px;
 }
 
@@ -366,7 +303,7 @@ body, html, .container {
 .bannerImage {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit:cover;
 }
 
 .bannerInfoSection {
@@ -396,8 +333,6 @@ body, html, .container {
 .detailsRow {
   display: flex;
   flex-direction: row;
-  height: 35vh;
-  flex: 6;
 }
 
 .detailsDescriptionSection {
@@ -412,11 +347,12 @@ body, html, .container {
 
 
 .detailsInfoSection .sectionHeading {
- padding-left:0;
+  padding-left: 0;
 }
 
-.detailsInfoSection,.infoText {
- padding-left:0;
+.detailsInfoSection,
+.infoText {
+  padding-left: 0;
 }
 
 .footerMeta {
@@ -437,15 +373,6 @@ body, html, .container {
   .detailsCard {
     flex-direction: column;
   }
-
-  .detailsTextSections {
-    flex-direction: column;
-  }
-
-  .detailsContentSection {
-    padding: 16px;
-  }
-
   .detailsPageTitle {
     font-size: 2vh;
   }
