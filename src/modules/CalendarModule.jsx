@@ -3,6 +3,7 @@ import { Spinner, Text, Link } from "@fluentui/react";
 import dayjs from "dayjs";
 import { useHistory } from "react-router-dom";
 import styles from "./CalendarModule.module.css";
+import { Icon } from '@fluentui/react';
 
 const API_URL =
   "https://prod-179.westeurope.logic.azure.com:443/workflows/7c84997dd6894507a60796acb06e5c43/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=6hFoizfo2w62d0iQK_Zyt7a3Ycr9akAkXdCPAG0ecwQ";
@@ -38,6 +39,8 @@ export default function CalendarModule() {
   const history = useHistory();
 
   useEffect(() => {
+
+
     async function fetchEvents() {
       try {
         setLoading(true);
@@ -103,12 +106,9 @@ const formatDate = (iso) => {
     <div className={styles.container}>
       <div className={styles.upcomingEventsWidget}>
         <div className={styles.widgetHeader}>
-          <span role="img" aria-label="calendar" className={styles.monochromeIcon}>
-            🗓️
-          </span>{" "}
-          Upcoming Events
+          <Icon iconName="Calendar" />{" "}Upcoming Events
         </div>
-
+        <div className={styles.eventLinkContainer}>
         {loading && (
           <div className={styles.loadingContainer}>
             <Spinner size={3} label="Loading..." />
@@ -129,6 +129,7 @@ const formatDate = (iso) => {
             </Link>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

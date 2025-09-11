@@ -1,4 +1,5 @@
 /* --- General Layout --- */
+
 body, html, .container {
   background-color: #f1f1f1; /* Light background color */
   color: #323130; /* Dark text for the overall page */
@@ -6,6 +7,13 @@ body, html, .container {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll; /* or auto, depending on your needs */
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 .loadingContainer {
@@ -24,6 +32,7 @@ body, html, .container {
   min-width: 100vw;
   justify-content: center;
   align-items: center;
+    flex-direction: row;
 }
 
 .mainContent {
@@ -97,6 +106,9 @@ body, html, .container {
 /* --- Upcoming Events Widget --- */
 .upcomingEventsWidget {
   flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   min-width: 380px;
   max-width: 380px;
   background: #ffffff; /* White background */
@@ -105,6 +117,22 @@ body, html, .container {
   padding: 16px;
 }
 
+.eventLinkContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column; /* stack events vertically */
+  max-height: calc(5 * 48px); /* adjust 48px to match your .widgetEventItem height */
+  overflow-y: auto;
+
+  /* hide scrollbars cross-browser */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.eventLinkContainer::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+
 /* Widget header (Heading 2 spec) */
 .widgetHeader {
   font-size: 20px;
@@ -112,6 +140,7 @@ body, html, .container {
   color: rgb(51, 51, 51);
   margin-bottom: 8px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 8px;
 }
@@ -171,8 +200,8 @@ body, html, .container {
 .detailsPageWrapper {
   background-color: #f3f2f1; /* Light gray background for the entire page */
   padding: 24px;
-  min-height: 100vh;
   min-width: 100vw;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -184,7 +213,7 @@ body, html, .container {
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 90vw;
+  width: 80vw;
   height: 80vh;
   position: relative;
   overflow: hidden;
@@ -326,9 +355,8 @@ body, html, .container {
 .bannerRow {
   display: flex;
   flex-direction: row;
-  height: 250px;
-  
-  margin-bottom: 24px;
+  height: 42vh;
+  margin-bottom: 14px;
 }
 
 .bannerImageSection {
@@ -337,12 +365,12 @@ body, html, .container {
 
 .bannerImage {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: fill;
 }
 
 .bannerInfoSection {
-  flex: 3;
+  flex: 2;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -354,6 +382,7 @@ body, html, .container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  position: relative;
 }
 
 .bannerCategory {
@@ -367,14 +396,18 @@ body, html, .container {
 .detailsRow {
   display: flex;
   flex-direction: row;
+  height: 35vh;
+  flex: 6;
 }
 
 .detailsDescriptionSection {
   flex: 7;
+  height: 100%;
 }
 
 .detailsInfoSection {
-  flex: 3;
+  flex: 2;
+  height: 100%;
 }
 
 
@@ -397,15 +430,8 @@ body, html, .container {
   align-self: bottom;
 }
 
-.invisibleScroll {
-  overflow: auto; /* or scroll */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-}
 
-.invisibleScroll::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
-}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .detailsCard {

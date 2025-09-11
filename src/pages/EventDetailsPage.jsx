@@ -4,11 +4,10 @@ import { Spinner, Text, Link, IconButton } from "@fluentui/react";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc'
 import styles from "../modules/CalendarModule.module.css";
-import { initializeIcons } from '@fluentui/react/lib/Icons';
 
-initializeIcons();
 
 dayjs.extend(utc);
+
 
 function ensureEnd(start, end) {
   return end || dayjs(start).add(1, "hour").toISOString();
@@ -153,7 +152,7 @@ export default function EventDetailsPage() {
     endDate.format("HH:mm") === "23:59";
 
   return (
-    <div className={`${styles.detailsPageWrapper} ${styles.invisibleScroll}`}>
+    <div className={styles.detailsPageWrapper}>
     <div className={styles.detailsCard}>
 
   {/* Row 1: Banner */}
